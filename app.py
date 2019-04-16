@@ -17,25 +17,27 @@ mysql = MySQL(app)
 
 Articles = Articles()
 
-
+# Index
 @app.route('/')
 def index():
     return render_template('home.html')
 
-
+# About
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-
+# Articles
 @app.route('/articles')
 def articles():
     return render_template('articles.html', articles=Articles)
 
-
+# Single Article
 @app.route('/article/<string:id>/')
 def article(id):
     return render_template('article.html', id=id)
+
+# Register Form Class
 
 
 class RegisterForm(Form):
@@ -48,7 +50,7 @@ class RegisterForm(Form):
     ])
     confirm = PasswordField('Confirm Password')
 
-
+# User Register
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)
