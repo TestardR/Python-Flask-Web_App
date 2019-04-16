@@ -177,7 +177,7 @@ def add_article():
 
         return redirect(url_for('dashboard'))
 
-    return render_template('add_article', form=form)
+    return render_template('add_article.html', form=form)
 
 
 if __name__ == '__main__':
