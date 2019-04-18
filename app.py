@@ -31,7 +31,7 @@ def about():
 # Articles
 @app.route('/articles')
 def articles():
-     # Create cursor
+    # Create cursor
     cur = mysql.connection.cursor()
 
     # Get articles
@@ -51,7 +51,14 @@ def articles():
 # Single Article
 @app.route('/article/<string:id>/')
 def article(id):
-    return render_template('article.html', id=id)
+     # Create cursor
+    cur = mysql.connection.cursor()
+
+    # Get articles
+    result = cur.execute("SELECT * FROM articles WHERE id = %s", [id])
+
+    article = cur.fetchone()
+    return render_template('article.html', article=article)
 
 # Register Form Class
 
